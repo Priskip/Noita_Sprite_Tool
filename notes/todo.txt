@@ -1,0 +1,12 @@
+﻿What still needs to be done here?
+
+[✓] - make custom rendering in imgui for static images 
+[✓] - read Noita's sprite animation xml files
+[✓] - make custom rendering in imgui for animations
+[✓] - read image textures for imgui into their own class/storage obj
+[x] - make color shifting for roygbv glimmers
+[x] - make color shifting for the black and white glimmers
+[x] - make color shifting for the rainbow glimmers
+[x] - load images and animations on the heap from file browser
+[x] - file browser history
+[x] - file browser display mode states

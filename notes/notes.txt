@@ -1,0 +1,90 @@
+Switch Statement and Static Cast for Enums
+
+enum file_type { UNKNOWN, FOLDER, TXT, PNG, XML, LUA, MD };
+static int num = 0;
+ImGui::SliderInt("Num", &num, 0, 6);
+
+file_type test_enum = static_cast<file_type>(num);
+
+switch (test_enum) {
+case UNKNOWN:
+	ImGui::Text("UNKNOWN");
+	break;
+case FOLDER:
+	ImGui::Text("FOLDER");
+	break;
+case TXT:
+	ImGui::Text("TXT");
+	break;
+case PNG:
+	ImGui::Text("PNG");
+	break;
+case XML:
+	ImGui::Text("XML");
+	break;
+case LUA:
+	ImGui::Text("LUA");
+	break;
+case MD:
+	ImGui::Text("MD");
+	break;
+}
+
+
+
+/*
+2d pointer array math example
+
+	const int array_width = 5;
+	const int array_height = 5;
+
+	int array_of_ints[array_height][array_width] =
+	{
+		{00,01,02,03,04},
+		{10,11,22,33,44},
+		{20,21,22,33,44},
+		{30,31,22,33,44},
+		{40,41,22,33,44}
+	};
+
+	int *p = &array_of_ints[0][0];
+
+	int row = 3;
+	int column = 1;
+
+	std::cout << *(p + (row * 5) + column) << "\n";
+*/
+
+/*
+//Manipulating iostream
+	std::ios dec_state(nullptr);
+	dec_state.copyfmt(std::cout);
+	std::ios hex_state(nullptr);
+	std::cout << std::internal << std::setfill('0') << std::hex << std::setw(2) << std::uppercase;
+	hex_state.copyfmt(std::cout);
+
+	for (int8_t i = INT8_MIN; i < INT8_MAX; i++) {
+		int num = i;
+
+		if (num < 0) {
+			std::cout << "WAS NEGATIVE ";
+			num += 256; 
+		}
+
+		std::cout.copyfmt(dec_state);
+		std::cout << num << " ";
+		
+		std::cout.copyfmt(hex_state);
+		std::cout << num << " ";
+
+		std::cout << "\n";
+	}
+*/
+
+/*
+int d = 42;
+int o = 052;
+int x = 0x2a;
+int X = 0X2A;
+int b = 0b101010; // C++14
+*/

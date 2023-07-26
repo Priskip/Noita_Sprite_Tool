@@ -1,0 +1,98 @@
+//Standards
+#include <iostream>
+#include <string>
+#include <vector>
+#include <algorithm>
+//Libraries
+#include "imgui.h"
+#include "lodepng.h"
+#include "tinyxml2.h"
+//Priskip's
+#include "utils.h"
+#include "Image.h"
+#include "ImageUtils.h"
+#include "File_Browser.h"
+#include "SpriteAnimation.h"
+#include "CustomImGUIRenderers.h"
+
+void performMainGUILoop() {
+	//Variables
+	static bool show_demo_window = false;
+	static bool show_static_image_rendering = false;
+	static bool show_animation_rendering = false;
+	static bool show_file_browser = false;
+	static bool test_window = true;
+	static bool test_window2 = true;
+
+	static std::string test_image_path = 
+		"C:\\Users\\aidan\\source\\repos\\Image_Laboratories\\Glimmering_Tool\\files\\animations\\blackhole_animation_debug.png";
+	static Image test_image(test_image_path);
+
+	static std::string file_browser_starting_location = 
+		"C:\\Program Files (x86)\\Steam\\steamapps\\common\\Noita\\mods\\purgatory";
+	static FileBrowser file_browser(file_browser_starting_location);
+
+	static std::string sprite_animation_path = 
+		"C:\\Users\\aidan\\source\\repos\\Image_Laboratories\\Glimmering_Tool\\files\\animations\\black_hole.xml";
+	static SpriteAnimation sprite_animation(sprite_animation_path);
+
+	//Menu Bar
+	if (ImGui::BeginMainMenuBar())
+	{
+		if (ImGui::BeginMenu("Windows"))
+		{
+			if (ImGui::MenuItem("Demo Window", enabledOrDisabled(show_demo_window).c_str())) {
+				show_demo_window = !show_demo_window;
+			}
+			if (ImGui::MenuItem("Statiic Rendering Window", enabledOrDisabled(show_static_image_rendering).c_str())) {
+				show_static_image_rendering = !show_static_image_rendering;
+			}
+			if (ImGui::MenuItem("Animation Rendering Window", enabledOrDisabled(show_animation_rendering).c_str())) {
+				show_animation_rendering = !show_animation_rendering;
+			}
+
+			ImGui::EndMenu();
+		}
+		if (ImGui::BeginMenu("File Broswer"))
+		{
+			if (ImGui::MenuItem("File Browser", enabledOrDisabled(show_file_browser).c_str())) {
+				show_file_browser = !show_file_browser;
+			}
+			ImGui::EndMenu();
+		}
+		ImGui::EndMainMenuBar();
+	}
+
+	//Demo Window
+	if (show_demo_window) {
+		ImGui::ShowDemoWindow(&show_demo_window);
+	}
+
+	//Test Window
+	if (test_window) {
+		ImGui::Begin("Testing Window");
+
+		ImGui::End();
+	}
+
+	//Test Window
+	if (test_window2) {
+		ImGui::Begin("Testing Window 2");
+
+		//displayImage(test_image, 5);
+		//drawSpriteAnimation(sprite_animation, 9, ImGui::GetFrameCount(), 5);
+		//drawSpriteAnimationFrame(sprite_animation, 5, 5);
+
+		ImGui::End();
+	}
+
+	//File Browser
+	if (show_file_browser) {
+		ImGui::Begin("File Browser");
+
+		//file_browser.doTheImGuiThing();
+
+		ImGui::End();
+	}
+}
+
